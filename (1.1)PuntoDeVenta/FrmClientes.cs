@@ -37,6 +37,15 @@ namespace _1._1_PuntoDeVenta
             TodosCliente();
         }
 
+        private void txtBuscador_TextChanged(object sender, EventArgs e)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var cliente = context.Clientes.Where(x => x.Nombre.Contains(txtNombre.Text)).ToList();
+                dgvClientes.DataSource = cliente;
+            }
+        }
+
         private void FrmClientes_Load(object sender, EventArgs e)
         {
             TodosCliente();
@@ -129,5 +138,6 @@ namespace _1._1_PuntoDeVenta
             dtpFechaNacimiento.Value = Convert.ToDateTime(dgvClientes.CurrentRow.Cells[5].Value.ToString());
             txtRFC.Text = dgvClientes.CurrentRow.Cells[6].Value.ToString();
         }
+       
     }
 }

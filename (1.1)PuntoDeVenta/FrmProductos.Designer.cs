@@ -55,6 +55,7 @@ namespace _1._1_PuntoDeVenta
             this.txtBuscador.Name = "txtBuscador";
             this.txtBuscador.Size = new System.Drawing.Size(240, 23);
             this.txtBuscador.TabIndex = 39;
+            this.txtBuscador.TextChanged += new System.EventHandler(this.txtBuscador_TextChanged);
             // 
             // label7
             // 

@@ -27,18 +27,28 @@ namespace _1._1_PuntoDeVenta
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            AgregarProducto();
+            ModificarCliente();
             TodosProducto();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
+            EliminarCliente();
+            TodosProducto();
         }
 
         private void FrmProductos_Load(object sender, EventArgs e)
         {
             TodosProducto();
+        }
+
+        private void txtBuscador_TextChanged(object sender, EventArgs e)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var producto = context.Productos.Where(x => x.Nombre.Contains(txtNombre.Text)).ToList();
+                dgvProductos.DataSource = producto;
+            }
         }
 
         private void TodosProducto()
@@ -118,5 +128,7 @@ namespace _1._1_PuntoDeVenta
             txtPrecioCompra.Text = dgvProductos.CurrentRow.Cells[4].Value.ToString();
             txtPrecioVenta.Text = dgvProductos.CurrentRow.Cells[5].Value.ToString();
         }
+
+
     }
 }
