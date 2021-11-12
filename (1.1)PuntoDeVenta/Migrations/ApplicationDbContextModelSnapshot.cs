@@ -41,7 +41,7 @@ namespace _1._1_PuntoDeVenta.Migrations
                     b.Property<string>("RFC")
                         .HasColumnType("text");
 
-                    b.Property<string>("sexo")
+                    b.Property<string>("Sexo")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -77,6 +77,33 @@ namespace _1._1_PuntoDeVenta.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Empleados");
+                });
+
+            modelBuilder.Entity("_1._1_PuntoDeVenta.Models.Productos", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Marca")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("text");
+
+                    b.Property<int>("PrecioCompra")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PrecioVenta")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Productos");
                 });
 #pragma warning restore 612, 618
         }
